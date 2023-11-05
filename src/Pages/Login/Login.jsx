@@ -1,15 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
 
 const Login = () => {
-  const { user, login } = useAuth();
-  console.log(user);
+  const {signIn } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const navigate = useNavigate();
+  
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    signIn(email, password)
+      .then((res) => {
+        console.log(res.user);
+        e.target.reset;
+        setSuccessMessage("Logged in successfully");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoginError("Invalid email or password. Please try again.");
+      });
+  }
+
   return (
     <>
       <div className="hero px-4 md:px-6 md:my-12">
         <div className="card w-full md:max-w-[500px]  shadow-2xl">
-          <form className="card-body w-full md:w-[420px] mx-auto">
+          <form onSubmit={handleLogin} className="card-body w-full md:w-[420px] mx-auto">
             <h2 className="text-3xl text-center font-semibold mb-[12px]">
               Login your account
             </h2>
@@ -26,6 +48,7 @@ const Login = () => {
                 placeholder="Enter your email address"
                 className="input bg-[#F3F3F3] mb-2"
                 required
+                onBlur={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="form-control">
@@ -38,6 +61,7 @@ const Login = () => {
                 placeholder="Enter your password"
                 className="input bg-[#F3F3F3]"
                 required
+                onBlur={(e) => setPassword(e.target.value)}
               />
               <label className="label">
                 <a
@@ -49,7 +73,7 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-black hover:bg-green-600 text-white">
+              <button type="submit" className="btn bg-black hover:bg-green-600 text-white">
                 Login
               </button>
             </div>

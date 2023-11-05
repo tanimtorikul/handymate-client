@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const { createUser } = useAuth();
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [registerError, setRegisterError] = useState("");
 
@@ -22,14 +24,15 @@ const Register = () => {
       setRegisterError("Password should have at least one special character");
       return;
     }
-
+    setRegisterError("");
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
-
+        // console.log(res.user);
+        toast.success("User created successfully!");
       })
       .catch((error) => {
         console.log(error);
+        setRegisterError(error.message);
       });
   };
   return (
