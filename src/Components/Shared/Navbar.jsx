@@ -3,8 +3,8 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const {user, logOut} = useAuth();
-  const handleLogout =() => {
+  const { user, logOut } = useAuth();
+  const handleLogout = () => {
     logOut()
       .then(() => {
         toast.success("User logged out successfully!");
@@ -12,41 +12,8 @@ const Navbar = () => {
       .catch((error) => {
         // console.log(error);
       });
-  }
-  const navLinks = (
-    <>
-      <li className="text-lg text-white font-medium">
-        <NavLink
-          to="/"
-          style={({ isActive }) => {
-            return {
-              backgroundColor: isActive ? "white" : "",
-              fontWeight: isActive ? "bold" : "normal",
-              color: isActive ? "green" : "red",
-              paddingBottom: isActive ? "1px " : "none",
-            };
-          }}
-        >
-          Home
-        </NavLink>
-      </li>
+  };
 
-      <li className="text-lg text-white font-medium">
-        <NavLink
-          to="/services"
-          style={({ isActive }) => {
-            return {
-              backgroundColor: isActive ? "white" : "",
-              fontWeight: isActive ? "medium" : "normal",
-              color: isActive ? "green" : "black",
-            };
-          }}
-        >
-          All Services
-        </NavLink>
-      </li>
-    </>
-  );
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -71,18 +38,57 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {navLinks}
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <a>Dashboard</a>
+              <ul className="px-4">
+                <li>
+                  <NavLink to="/add-services">Add Services</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/my-services">My Services</NavLink>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <NavLink to="/dashboard/all-services">All Services</NavLink>
+            </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
-          HandyMate
-        </Link>
+        <NavLink to="/" className="btn btn-ghost normal-case text-xl">
+          daisyUI
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li tabIndex={0}>
+            <details>
+              <summary>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+              </summary>
+              <ul className="p-2">
+                <li>
+                  <NavLink to="/add-services">Add Services</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/my-services">My Services</NavLink>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <NavLink to="/all-services">All Services</NavLink>
+          </li>
+        </ul>
       </div>
       <div className="navbar-end">
-       { user?.email ?  <div className="dropdown dropdown-end ml-10">
+        {user?.email ? (
+          <div className="dropdown dropdown-end ml-10">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img src={user.photoURL} alt={user?.email} />
@@ -99,9 +105,12 @@ const Navbar = () => {
                 <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
-          </div> : <Link to="/login" className="">
-          Login
-        </Link>}
+          </div>
+        ) : (
+          <Link to="/login" className="">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

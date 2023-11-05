@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser } = useAuth();
+  const { user, createUser } = useAuth();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [registerError, setRegisterError] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -28,7 +29,9 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         // console.log(res.user);
-        toast.success("User created successfully!");
+        toast.success('Welcome', user?.email);
+        navigate('/');
+
       })
       .catch((error) => {
         console.log(error);
