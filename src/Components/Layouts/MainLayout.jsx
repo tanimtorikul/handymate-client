@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="font-poppins">
       <div className="max-w-[1140px] mx-auto">
         <Navbar></Navbar>
       </div>
