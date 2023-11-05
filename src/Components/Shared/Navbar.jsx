@@ -1,4 +1,40 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Navbar = () => {
+  const navLinks = (
+    <>
+      <li className="text-lg text-white font-medium">
+        <NavLink
+          to="/"
+          style={({ isActive }) => {
+            return {
+              backgroundColor: isActive ? "white" : "",
+              fontWeight: isActive ? "bold" : "normal",
+              color: isActive ? "green" : "red",
+              paddingBottom: isActive ? "1px " : "none",
+            };
+          }}
+        >
+          Home
+        </NavLink>
+      </li>
+
+      <li className="text-lg text-white font-medium">
+        <NavLink
+          to="/services"
+          style={({ isActive }) => {
+            return {
+              backgroundColor: isActive ? "white" : "",
+              fontWeight: isActive ? "medium" : "normal",
+              color: isActive ? "green" : "black",
+            };
+          }}
+        >
+          All Services
+        </NavLink>
+      </li>
+    </>
+  );
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -23,39 +59,20 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">HandyMate</a>
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
+          HandyMate
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <Link to="/login" className="">
+          Login
+        </Link>
       </div>
     </div>
   );
