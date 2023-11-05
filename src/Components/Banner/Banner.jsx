@@ -3,8 +3,8 @@ import { Carousel } from "react-responsive-carousel";
 
 const Banner = () => {
   return (
-    <div className="my-6">
-      <Carousel showThumbs={true}>
+    
+      <Carousel showThumbs={true} thumbWidth={100} autoPlay={true} interval={2000} infiniteLoop={true} className="w-full">
         <div className="relative md:h-[650px]">
           <img src="handy1.jpg" alt="Slide 1" />
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex flex-col justify-center text-white text-2xl">
@@ -18,7 +18,7 @@ const Banner = () => {
                 exceptional. Let us serve you with dedication and love.
               </p>
               <div className="flex gap-4 justify-center">
-                <button className="btn bg-[#ED1D24] text-white border-0 py-2 px-6 rounded-lg hover:bg-[#FF0D10]">
+                <button className="btn bg-[#35C36F] text-white border-0 py-2 px-6 rounded-lg hover:bg-[#FF0D10]">
                   Read More
                 </button>
                 <button className="btn bg-black text-white border-0 py-2 px-6 rounded-lg hover:bg-gray-800">
@@ -41,7 +41,7 @@ const Banner = () => {
                 the rest!
               </p>
               <div className="flex gap-4 justify-center">
-                <button className="btn bg-[#ED1D24] text-white border-0 py-2 px-6 rounded-lg hover:bg-[#FF0D10]">
+                <button className="btn bg-[#35C36F] text-white border-0 py-2 px-6 rounded-lg hover:bg-[#FF0D10]">
                   Learn More
                 </button>
                 <button className="btn bg-black text-white border-0 py-2 px-6 rounded-lg hover:bg-gray-800">
@@ -64,7 +64,7 @@ const Banner = () => {
                 home a better place.
               </p>
               <div className="flex gap-4 justify-center">
-                <button className="btn bg-[#ED1D24] text-white border-0 py-2 px-6 rounded-lg hover:bg-[#FF0D10]">
+                <button className="btn bg-[#35C36F] text-white border-0 py-2 px-6 rounded-lg hover:bg-[#FF0D10]">
                   Discover More
                 </button>
                 <button className="btn bg-black text-white border-0 py-2 px-6 rounded-lg hover:bg-gray-800">
@@ -75,7 +75,7 @@ const Banner = () => {
           </div>
         </div>
       </Carousel>
-    </div>
+    
   );
 };
 
