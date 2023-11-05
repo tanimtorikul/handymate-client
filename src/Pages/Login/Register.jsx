@@ -6,15 +6,27 @@ import { useState } from "react";
 const Register = () => {
   const { createUser } = useAuth();
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [registerError, setRegisterError] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
 
+    if (password.length < 6) {
+      setRegisterError("Password should be at least 6 characters or longer");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegisterError("Password should have at least uppercase character");
+      return;
+    } else if (!/[^a-zA-Z0-9]/.test(password)) {
+      setRegisterError("Password should have at least one special character");
+      return;
+    }
+
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
+
       })
       .catch((error) => {
         console.log(error);
@@ -81,6 +93,11 @@ const Register = () => {
                 Register
               </button>
             </div>
+            {registerError && (
+              <p className="text-red-600 text-center font-medium">
+                {registerError}
+              </p>
+            )}
             <h2 className="text-center text-lg font-medium">
               Already have an account?{" "}
               <Link to="/login">
