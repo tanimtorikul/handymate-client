@@ -46,16 +46,15 @@ const PopularServices = () => {
                   {service.service_provider_name}
                 </span>
               </div>
-              <p className="text-gray-500 text-sm mt-2">
-                {service.service_area}
-              </p>
               <div className="price-button flex items-center justify-between mt-4">
                 <span className="text-2xl font-semibold text-blue-600">
                   {service.price}
                 </span>
-                <button className="view-details-button bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400 px-4 py-2">
-                  View Details
-                </button>
+                <Link to={`/serviceDetail/${service._id}`}>
+                  <button className="view-details-button bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400 px-4 py-2">
+                    View Details
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

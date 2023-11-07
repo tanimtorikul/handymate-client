@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 const ServiceCard = ({ service }) => {
-  console.log(service);
+  // console.log(service);
   const {
+    _id,
     service_image,
     service_name,
     service_description,
@@ -9,7 +12,7 @@ const ServiceCard = ({ service }) => {
     service_area,
     price,
   } = service;
-  console.log(service_image);
+  // console.log(service_image);
 
   return (
     <div className="overflow-hidden rounded-lg shadow-lg" href="#">
@@ -36,9 +39,12 @@ const ServiceCard = ({ service }) => {
         <p className="text-gray-500 text-sm mt-2">{service_area}</p>
         <div className="mt-4 flex items-center justify-between">
           <span className="text-2xl font-semibold text-blue-600">{price}</span>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400">
+         <Link to={`/serviceDetail/${service._id}`}
+>
+         <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400">
             View Details
           </button>
+         </Link>
         </div>
       </div>
     </div>

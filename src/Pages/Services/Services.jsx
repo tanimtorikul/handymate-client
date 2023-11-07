@@ -12,7 +12,7 @@ const Services = () => {
       setServices(data.data);
     });
   }, []);
-  console.log(services);
+  // console.log(services);
   return (
     <div>
       <Helmet>

@@ -11,12 +11,13 @@ import Error from "../Pages/Error";
 import MyServices from "../Pages/MyServices";
 import AddServices from "../Pages/AddServices";
 import MySchedules from "../Pages/MySchedules";
+import ServiceDetail from "../Pages/Services/ServiceDetail";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement:<Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -25,6 +26,12 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
+      },
+      {
+        path: "/serviceDetail/:serviceId",
+        element: <ServiceDetail></ServiceDetail>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/services/${params.serviceId}`),
       },
       {
         path: "login",
@@ -36,9 +43,11 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <PrivateRoute>
-          <Dashboard></Dashboard>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-services",
