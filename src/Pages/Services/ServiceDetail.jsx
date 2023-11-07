@@ -2,13 +2,14 @@ import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const ServiceDetail = () => {
   const loadedService = useLoaderData();
   const { user } = useAuth();
   const userEmail = user?.email;
-  console.log(user);
-  console.log(loadedService);
+  //   console.log(user);
+  //   console.log(loadedService);
 
   const {
     _id,
@@ -47,6 +48,13 @@ const ServiceDetail = () => {
       .post("http://localhost:5000/api/bookings", bookingData)
       .then((data) => {
         console.log(data.data);
+        if (data.data.acknowledged) {
+          document.getElementById("my_modal_3").close();
+          toast.success("Your Booking has been successfully confirmed!");
+        }
+      })
+      .catch((error) => {
+        toast.error("An error occurred while processing your request.");
       });
   };
 
@@ -90,14 +98,17 @@ const ServiceDetail = () => {
           </button>
           <dialog id="my_modal_3" className="modal ">
             <div className="modal-box h-full">
+              <button
+                onClick={() => document.getElementById("my_modal_3").close()}
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-gray-500 hover:text-red-500 transition duration-300 transform hover:rotate-45"
+              >
+                ✕
+              </button>
               <form
                 onSubmit={handleBooking}
                 method="dialog"
                 className="p-2 bg-white shadow-lg rounded-lg"
               >
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-gray-500 hover:text-red-500 transition duration-300 transform hover:rotate-45">
-                  ✕
-                </button>
                 <h3 className="font-bold text-lg md:text-xl text-center text-[#25ad50de]">
                   Book {service_name}
                 </h3>
@@ -194,6 +205,7 @@ const ServiceDetail = () => {
                 <button
                   className="btn w-full bg-[#25ad50de] text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                   type="submit"
+                  id="purchaseButton"
                 >
                   Purchase This Service
                 </button>
