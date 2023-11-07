@@ -68,14 +68,6 @@ const Login = () => {
                 required
                 onBlur={(e) => setPassword(e.target.value)}
               />
-              <label className="label">
-                <a
-                  href="#"
-                  className="label-text-alt link link-hover text-base"
-                >
-                  Forgot password?
-                </a>
-              </label>
             </div>
             <div className="form-control mt-6">
               <button

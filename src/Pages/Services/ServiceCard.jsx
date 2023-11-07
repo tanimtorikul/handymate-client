@@ -12,13 +12,10 @@ const ServiceCard = ({ service }) => {
   console.log(service_image);
 
   return (
-    <a
-      className="w-full max-w-sm mx-auto overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out transform hover:scale-105"
-      href="#"
-    >
+    <div className="overflow-hidden rounded-lg shadow-lg" href="#">
       <div className="relative pb-2/3">
         <img
-          className="w-full h-full object-cover rounded-t-lg"
+          className="w-full h-full object-cover rounded-t-lg hover:shadow-xl transition-transform duration-300 ease-in-out transform hover:scale-105"
           src={service_image}
           alt={service_name}
         />
@@ -44,7 +41,7 @@ const ServiceCard = ({ service }) => {
           </button>
         </div>
       </div>
-    </a>
+    </div>
   );
 };
 

@@ -1,11 +1,12 @@
 import { FaFacebookF, FaSquareXTwitter, FaInstagram } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="px-4 divide-y">
       <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
         <div className="lg:w-1/3">
-          <a
+          <Link
             rel="noopener noreferrer"
             href="#"
             className="flex justify-center space-x-3 lg:justify-start"
@@ -23,31 +24,31 @@ const Footer = () => {
             <span className="self-center text-2xl font-semibold">
               HandyMate
             </span>
-          </a>
+          </Link>
         </div>
         <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
           <div className="space-y-3">
             <h3 className="tracki uppercase dark:text-gray-50">Product</h3>
             <ul className="space-y-1">
               <li>
-                <a rel="noopener noreferrer" href="#">
+                <Link rel="noopener noreferrer" href="#">
                   Features
-                </a>
+                </Link>
               </li>
               <li>
-                <a rel="noopener noreferrer" href="#">
+                <Link rel="noopener noreferrer" href="#">
                   Integrations
-                </a>
+                </Link>
               </li>
               <li>
-                <a rel="noopener noreferrer" href="#">
+                <Link rel="noopener noreferrer" href="#">
                   Pricing
-                </a>
+                </Link>
               </li>
               <li>
-                <a rel="noopener noreferrer" href="#">
+                <Link rel="noopener noreferrer" href="#">
                   FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -55,14 +56,14 @@ const Footer = () => {
             <h3 className="tracki uppercase dark:text-gray-50">Company</h3>
             <ul className="space-y-1">
               <li>
-                <a rel="noopener noreferrer" href="#">
+                <Link rel="noopener noreferrer" href="#">
                   Privacy
-                </a>
+                </Link>
               </li>
               <li>
-                <a rel="noopener noreferrer" href="#">
+                <Link rel="noopener noreferrer" href="#">
                   Terms of Service
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -70,55 +71,55 @@ const Footer = () => {
             <h3 className="uppercase dark:text-gray-50">Developers</h3>
             <ul className="space-y-1">
               <li>
-                <a rel="noopener noreferrer" href="#">
+                <Link rel="noopener noreferrer" href="#">
                   Public API
-                </a>
+                </Link>
               </li>
               <li>
-                <a rel="noopener noreferrer" href="#">
+                <Link rel="noopener noreferrer" href="#">
                   Documentation
-                </a>
+                </Link>
               </li>
               <li>
-                <a rel="noopener noreferrer" href="#">
+                <Link rel="noopener noreferrer" href="#">
                   Guides
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <div className="space-y-3">
             <div className="uppercase dark:text-gray-50">Social media</div>
             <div className="flex justify-start space-x-3">
-              <a
+              <Link
                 rel="noopener noreferrer"
                 href="#"
                 title="Facebook"
                 className="flex text-lg items-center p-1"
               >
                 <FaFacebookF />
-              </a>
-              <a
+              </Link>
+              <Link
                 rel="noopener noreferrer"
                 href="#"
                 title="Twitter"
                 className="flex text-lg items-center p-1"
               >
                 <FaSquareXTwitter />
-              </a>
-              <a
+              </Link>
+              <Link
                 rel="noopener noreferrer"
                 href="#"
                 title="Instagram"
                 className="flex text-lg items-center p-1"
               >
                 <FaInstagram />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
       <div className="py-6 text-sm text-center dark:text-gray-400">
-        © 2023 HandyMate. All rights reserved.
+        © 2023 HandyMate by Tanim.
       </div>
     </footer>
   );

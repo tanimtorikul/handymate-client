@@ -34,15 +34,15 @@ const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     setLoading(true);
-    return signOut(auth)
-  }
+    return signOut(auth);
+  };
 
   const authentications = {
     user,
     loading,
     createUser,
     signIn,
-    logOut
+    logOut,
   };
   return (
     <AuthContext.Provider value={authentications}>

@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#6e5b5b] pb-4">
+    <div className=" pb-4">
       <div className="navbar  max-w-[1200px] mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -43,7 +43,7 @@ const Navbar = () => {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <a>Dashboard</a>
+                <NavLink>Dashboard</NavLink>
                 <ul className="px-4">
                   <li>
                     <NavLink to="/add-services">Add Services</NavLink>
@@ -60,7 +60,7 @@ const Navbar = () => {
           </div>
           <NavLink
             to="/"
-            className="btn btn-ghost text-white normal-case text-xl"
+            className="btn btn-ghost text-black normal-case text-xl"
           >
             HandyMate
           </NavLink>
@@ -72,7 +72,7 @@ const Navbar = () => {
                 exact
                 to="/"
                 activeClassName="text-black font-bold"
-                className="text-white"
+                className="text-black"
               >
                 Home
               </NavLink>
@@ -81,7 +81,7 @@ const Navbar = () => {
               <NavLink
                 to="/services"
                 activeClassName="text-black font-bold"
-                className="text-white"
+                className="text-black"
               >
                 All Services
               </NavLink>
@@ -92,7 +92,7 @@ const Navbar = () => {
                   <NavLink
                     to="/dashboard"
                     activeClassName="text-black font-bold"
-                    className="text-white"
+                    className="text-black"
                   >
                     Dashboard
                   </NavLink>
@@ -102,7 +102,7 @@ const Navbar = () => {
                     <NavLink
                       to="/my-services"
                       activeClassName="text-black font-bold"
-                      className="text-white"
+                      className="text-black"
                     >
                       My Services
                     </NavLink>
@@ -111,7 +111,7 @@ const Navbar = () => {
                     <NavLink
                       to="/add-services"
                       activeClassName="text-black font-bold"
-                      className="text-white"
+                      className="text-black"
                     >
                       Add Services
                     </NavLink>
@@ -120,7 +120,7 @@ const Navbar = () => {
                     <NavLink
                       to="/my-schedules"
                       activeClassName="text-red-500 font-bold"
-                      className="text-white"
+                      className="text-black"
                     >
                       My Schedules
                     </NavLink>
@@ -143,10 +143,10 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content  mt-3  p-2 shadow bg-red-200 z-10 rounded-box w-52"
               >
                 <li>
-                  <a>{user.displayName}</a>
+                  <p>{user.displayName}</p>
                 </li>
                 <li>
-                  <a onClick={handleLogout}>Logout</a>
+                  <Link onClick={handleLogout}>Logout</Link>
                 </li>
               </ul>
             </div>
