@@ -40,16 +40,16 @@ const Services = () => {
                       </label>
                       <input
                         type="text"
-                        className="p-3 block w-full bg-gray-100 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500 text-gray-800"
+                        className="p-3 block w-full bg-gray-100 rounded-md border border-gray-300 focus:border-green-500 focus:ring-green-500 text-gray-800"
                         placeholder="Search for services"
                       />
                     </div>
                     <div className="flex-[0_0_auto]">
                       <Link
-                        className="p-4 inline-flex justify-center items-center gap-2 rounded-md border border-blue-500 font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm"
+                        className="p-4 inline-flex justify-center items-center gap-2 rounded-md border border-green-500 font-semibold bg-[#25ad50de] text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all text-sm"
                         href="#"
                       >
-                        Explore
+                        Search
                       </Link>
                     </div>
                   </div>

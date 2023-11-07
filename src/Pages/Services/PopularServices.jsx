@@ -47,11 +47,11 @@ const PopularServices = () => {
                 </span>
               </div>
               <div className="price-button flex items-center justify-between mt-4">
-                <span className="text-2xl font-semibold text-blue-600">
+                <span className="text-2xl font-semibold text-green-600">
                   {service.price}
                 </span>
                 <Link to={`/serviceDetail/${service._id}`}>
-                  <button className="view-details-button bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400 px-4 py-2">
+                  <button className="view-details-button bg-[#25ad50de] text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-400 px-4 py-2">
                     View Details
                   </button>
                 </Link>
@@ -62,7 +62,7 @@ const PopularServices = () => {
       </div>
       <div className="flex justify-center mt-8">
         <Link to="/services">
-          <button className="show-all-button bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400">
+          <button className="show-all-button bg-[#25ad50de] text-white px-6 py-2 rounded-lg hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-400">
             Show All
           </button>
         </Link>

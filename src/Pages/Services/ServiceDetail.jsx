@@ -1,14 +1,17 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const ServiceDetail = () => {
   const loadedService = useLoaderData();
   const { user } = useAuth();
-  const email = user?.email;
+  const userEmail = user?.email;
   console.log(user);
   console.log(loadedService);
 
   const {
+    _id,
     service_image,
     service_name,
     service_description,
@@ -18,8 +21,40 @@ const ServiceDetail = () => {
     price,
   } = loadedService;
 
+  const handleBooking = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const date = form.date.value;
+    const instruction = form.instruction.value;
+    const provider_email = form.provider_email.value;
+
+    const bookingData = {
+      service_id: _id,
+      service_name,
+      service_image,
+      service_description,
+      service_provider_name,
+      service_provider_image,
+      date,
+      instruction,
+      price,
+      userEmail,
+      provider_email,
+    };
+    console.log(bookingData);
+
+    axios
+      .post("http://localhost:5000/api/bookings", bookingData)
+      .then((data) => {
+        console.log(data.data);
+      });
+  };
+
   return (
     <div className="max-w-7xl mx-auto p-4">
+      <Helmet>
+        <title>HandyMate | {service_name} Details</title>
+      </Helmet>
       <div className="grid grid-cols-1  md:grid-cols-1 gap-8">
         <div className="bg-white p-6 rounded-lg">
           <h2 className="text-3xl font-semibold mb-4">
@@ -54,15 +89,16 @@ const ServiceDetail = () => {
             Book Now
           </button>
           <dialog id="my_modal_3" className="modal ">
-            <div className="modal-box">
+            <div className="modal-box h-full">
               <form
+                onSubmit={handleBooking}
                 method="dialog"
                 className="p-2 bg-white shadow-lg rounded-lg"
               >
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-gray-500 hover:text-red-500 transition duration-300 transform hover:rotate-45">
                   ✕
                 </button>
-                <h3 className="font-bold text-xl text-center text-[#25ad50de]">
+                <h3 className="font-bold text-lg md:text-xl text-center text-[#25ad50de]">
                   Book {service_name}
                 </h3>
 
@@ -99,8 +135,8 @@ const ServiceDetail = () => {
                   </label>
                   <input
                     type="text"
-                    id="serviceProviderEmail"
-                    readOnly
+                    // readOnly
+                    name="provider_email"
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
                 </div>
@@ -111,7 +147,7 @@ const ServiceDetail = () => {
                   </label>
                   <input
                     type="text"
-                    defaultValue={email}
+                    defaultValue={userEmail}
                     readOnly
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
@@ -123,7 +159,8 @@ const ServiceDetail = () => {
                   </label>
                   <input
                     type="date"
-                    id="serviceDate"
+                    name="date"
+                    required
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
                 </div>
@@ -148,12 +185,12 @@ const ServiceDetail = () => {
                     Special Instructions:
                   </label>
                   <textarea
-                    id="specialInstructions"
-                    rows="4"
+                    name="instruction"
+                    rows="2"
+                    required
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                   ></textarea>
                 </div>
-
                 <button
                   className="btn w-full bg-[#25ad50de] text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                   type="submit"
