@@ -15,7 +15,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100">
+  <div className="bg-[#404040] mb-4">
+      <div className="navbar  max-w-[900px] mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -57,8 +58,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <NavLink to="/" className="btn btn-ghost normal-case text-xl">
-          daisyUI
+        <NavLink to="/" className="btn btn-ghost text-white normal-case text-xl">
+          HandyMate
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -66,23 +67,27 @@ const Navbar = () => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
+
+          <li>
+            <NavLink to="/services">All Services</NavLink>
+          </li>
           <li tabIndex={0}>
             <details>
               <summary>
                 <NavLink to="/dashboard">Dashboard</NavLink>
               </summary>
-              <ul className="p-2">
+              <ul className="p-2 z-10">
+                <li>
+                  <NavLink to="/my-services">My Services</NavLink>
+                </li>
                 <li>
                   <NavLink to="/add-services">Add Services</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/my-services">My Services</NavLink>
+                  <NavLink to="/my-schedules">My Schedules</NavLink>
                 </li>
               </ul>
             </details>
-          </li>
-          <li>
-            <NavLink to="/all-services">All Services</NavLink>
           </li>
         </ul>
       </div>
@@ -113,6 +118,7 @@ const Navbar = () => {
         )}
       </div>
     </div>
+  </div>
   );
 };
 

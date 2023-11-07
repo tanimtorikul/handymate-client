@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 const MainLayout = () => {
   return (
     <div className="font-poppins">
-      <div className="max-w-[1140px] mx-auto">
+      <div className="">
         <Navbar></Navbar>
       </div>
       <div className="min-h-screen">
