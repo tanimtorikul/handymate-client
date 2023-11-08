@@ -46,7 +46,7 @@ const ServiceDetail = () => {
     console.log(bookingData);
 
     axios
-      .post("https://handymate-server.vercel.app/api/bookings", bookingData)
+      .post("http://localhost:5000/api/bookings", bookingData)
       .then((data) => {
         console.log(data.data);
         if (data.data.acknowledged) {

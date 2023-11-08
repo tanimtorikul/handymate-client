@@ -9,11 +9,9 @@ const Services = () => {
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    axios
-      .get("https://handymate-server.vercel.app/api/services")
-      .then((data) => {
-        setServices(data.data);
-      });
+    axios.get("http://localhost:5000/api/services").then((data) => {
+      setServices(data.data);
+    });
   }, []);
   // console.log(services);
 

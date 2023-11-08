@@ -12,7 +12,7 @@ import AddServices from "../Pages/Dashboard/AddServices";
 import MyServices from "../Pages/Dashboard/MyServices";
 import MySchedules from "../Pages/Dashboard/MySchedules";
 import ManageServices from "../Pages/Services/ManageServices";
-// import UpdateService from "../Pages/Services/UpdateService";
+import UpdateService from "../Pages/Services/UpdateService";
 
 const router = createBrowserRouter([
   {
@@ -36,9 +36,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://handymate-server.vercel.app/api/services/${params.serviceId}`
-          ),
+          fetch(`http://localhost:5000/api/services/${params.serviceId}`),
       },
       {
         path: "login",
@@ -68,18 +66,16 @@ const router = createBrowserRouter([
         path: "manage-services",
         element: <ManageServices></ManageServices>,
       },
-      // {
-      //   path: "/updateService/:serviceId",
-      //   element: (
-      //     <PrivateRoute>
-      //       <UpdateService></UpdateService>
-      //     </PrivateRoute>
-      //   ),
-      //   loader: ({ params }) =>
-      //     fetch(
-      //       `https://handymate-server.vercel.app/api/services/${params.serviceId}`
-      //     ),
-      // },
+      {
+        path: "/updateService/:serviceId",
+        element: (
+          <PrivateRoute>
+            <UpdateService></UpdateService>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/services/${params.serviceId}`),
+      },
     ],
   },
 ]);
