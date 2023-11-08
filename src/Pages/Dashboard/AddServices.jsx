@@ -1,4 +1,6 @@
+import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 
 const AddServices = () => {
   const { user } = useAuth();
@@ -25,7 +27,19 @@ const AddServices = () => {
       serviceArea,
     };
     console.log(serviceData);
+
+    axios
+      .post("http://localhost:5000/api/services", serviceData)
+      .then((response) => {
+        if (response.status === 200) {
+          toast.success("Service added successfully!");
+          form.reset();
+        } else {
+          toast.error("Failed to add the service. Please try again later.");
+        }
+      });
   };
+
   return (
     <div className="hero px-6">
       <div className="card w-full max-w-4xl shadow-2xl">
