@@ -42,7 +42,7 @@ const Banner = () => {
               Your Trusted Handyman Service
             </h1>
             <p className="text-lg mb-6">
-              We're here to fix, repair, and improve your home with care and
+              We are here to fix, repair, and improve your home with care and
               expertise. Your satisfaction is our top priority. Let us handle
               the rest!
             </p>
@@ -66,7 +66,7 @@ const Banner = () => {
             </h1>
             <p className="text-lg mb-6">
               We take pride in our craftsmanship and attention to detail. From
-              small fixes to major renovations, we're dedicated to making your
+              small fixes to major renovations, we are dedicated to making your
               home a better place.
             </p>
             <div className="flex gap-4 justify-center">

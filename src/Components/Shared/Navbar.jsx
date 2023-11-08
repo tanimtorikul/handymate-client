@@ -53,9 +53,11 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
+              
               <li>
                 <NavLink to="/dashboard/all-services">All Services</NavLink>
               </li>
+              
             </ul>
           </div>
           <NavLink
@@ -69,9 +71,8 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink
-                exact
                 to="/"
-                activeClassName="text-black font-bold"
+                activeclassname="text-black font-bold"
                 className="text-black"
               >
                 Home
@@ -80,7 +81,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/services"
-                activeClassName="text-black font-bold"
+                activeclassname="text-black font-bold"
                 className="text-black"
               >
                 All Services
@@ -92,7 +93,7 @@ const Navbar = () => {
                   <summary>
                     <NavLink
                       to="/dashboard"
-                      activeClassName="text-black font-bold"
+                      activeclassname="text-black font-bold"
                       className="text-black"
                     >
                       Dashboard
@@ -102,7 +103,7 @@ const Navbar = () => {
                     <li>
                       <NavLink
                         to="/my-services"
-                        activeClassName="text-black font-bold"
+                        activeclassname="text-black font-bold"
                         className="text-black"
                       >
                         My Services
@@ -111,7 +112,7 @@ const Navbar = () => {
                     <li>
                       <NavLink
                         to="/add-services"
-                        activeClassName="text-black font-bold"
+                        activeclassname="text-black font-bold"
                         className="text-black"
                       >
                         Add Services
@@ -120,7 +121,7 @@ const Navbar = () => {
                     <li>
                       <NavLink
                         to="/my-schedules"
-                        activeClassName="text-red-500 font-bold"
+                        activeclassname="text-red-500 font-bold"
                         className="text-black"
                       >
                         My Schedules
@@ -134,7 +135,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/manage-services"
-                  activeClassName="text-black font-bold"
+                  activeclassname="text-black font-bold"
                   className="text-black"
                 >
                   Manage Services

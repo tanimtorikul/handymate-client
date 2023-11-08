@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ManageServices = () => {
   const { user } = useAuth();
@@ -10,20 +11,25 @@ const ManageServices = () => {
   const [userServices, setUserServices] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/services/provider/${providerEmail}`)
-      .then((data) => {
-        setUserServices(data.data);
-      });
-  }, []);
+    if (providerEmail) {
+      axios
+        .get(
+          `https://handymate-server.vercel.app/api/services/provider/${providerEmail}`
+        )
+        .then((data) => {
+          setUserServices(data.data);
+        });
+    }
+  }, [providerEmail]);
+
   console.log(userServices);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="container max-auto">
       <h2 className="text-3xl font-bold text-center text-gray-900 mt-8 mb-6">
-        {providerName}'s Added Services
+        Added Services of {providerName}
       </h2>
-      <ul className="grid w-[1000px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ul className="grid px-2 max-w-7xl mx-auto grid-cols-1 lg:grid-cols-4 gap-8">
         {userServices.map((service) => (
           <div
             key={service._id}
@@ -31,7 +37,7 @@ const ManageServices = () => {
           >
             <div className="relative">
               <img
-                className="w-full object-cover object-center"
+                className="md:w-full object-cover object-center"
                 src={service.serviceImage}
               />
             </div>
@@ -52,12 +58,16 @@ const ManageServices = () => {
                 {service.providerDesc}
               </p>
               <div className="flex justify-between items-center">
-                <button className="bg-black text-white font-semibold py-2 px-4 rounded-md focus:outline-none flex items-center">
-                  <FaEdit className="mr-2" /> Edit
-                </button>
-                <button className="bg-red-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none flex items-center">
-                  <FaTrashAlt className="mr-2" /> Delete
-                </button>
+                <Link to={`/update-service/${service._id}`}>
+                  <button className="bg-black text-white font-semibold py-2 px-4 rounded-md focus:outline-none flex items-center">
+                    <FaEdit className="mr-2" /> Update
+                  </button>
+                </Link>
+                <Link>
+                  <button className="bg-red-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none flex items-center">
+                    <FaTrashAlt className="mr-2" /> Delete
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
