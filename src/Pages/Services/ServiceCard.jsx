@@ -39,12 +39,11 @@ const ServiceCard = ({ service }) => {
         <p className="text-gray-500 text-sm mt-2">{serviceArea}</p>
         <div className="mt-4 flex items-center justify-between">
           <span className="text-2xl font-semibold text-green-600">{price}</span>
-         <Link to={`/serviceDetail/${service._id}`}
->
-         <button className="px-4 py-2 bg-[#25ad50de] text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-400">
-            View Details
-          </button>
-         </Link>
+          <Link>
+            <button className="px-4 py-2 bg-[#25ad50de] text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-400">
+              View Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>

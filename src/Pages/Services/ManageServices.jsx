@@ -19,6 +19,7 @@ const ManageServices = () => {
         .then((data) => {
           setUserServices(data.data);
         });
+        
     }
   }, [providerEmail]);
 
