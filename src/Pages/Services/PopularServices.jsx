@@ -6,9 +6,11 @@ const PopularServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/services").then((response) => {
-      setServices(response.data);
-    });
+    axios
+      .get("https://handymate-server.vercel.app/api/services")
+      .then((response) => {
+        setServices(response.data);
+      });
   }, []);
 
   const popularServices = services.slice(0, 4);

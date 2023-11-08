@@ -5,7 +5,6 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import Services from "../Pages/Services/Services";
-import Dashboard from "../Pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Error from "../Pages/Error";
 import ServiceDetail from "../Pages/Services/ServiceDetail";
@@ -35,7 +34,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/services/${params.serviceId}`),
+          fetch(
+            `https://handymate-server.vercel.app/api/services/${params.serviceId}`
+          ),
       },
       {
         path: "login",
@@ -44,14 +45,6 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
-      },
-      {
-        path: "dashboard",
-        element: (
-          <PrivateRoute>
-            <Dashboard></Dashboard>
-          </PrivateRoute>
-        ),
       },
       {
         path: "my-services",

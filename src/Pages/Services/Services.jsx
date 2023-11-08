@@ -8,9 +8,11 @@ const Services = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/services").then((data) => {
-      setServices(data.data);
-    });
+    axios
+      .get("https://handymate-server.vercel.app/api/services")
+      .then((data) => {
+        setServices(data.data);
+      });
   }, []);
   // console.log(services);
   return (

@@ -46,7 +46,7 @@ const ServiceDetail = () => {
     console.log(bookingData);
 
     axios
-      .post("http://localhost:5000/api/bookings", bookingData)
+      .post("https://handymate-server.vercel.app/api/bookings", bookingData)
       .then((data) => {
         console.log(data.data);
         if (data.data.acknowledged) {
@@ -149,6 +149,7 @@ const ServiceDetail = () => {
                   <input
                     type="email"
                     readOnly
+                    required
                     defaultValue={providerEmail}
                     name="provider_email"
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"

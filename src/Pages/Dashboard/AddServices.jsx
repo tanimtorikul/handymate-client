@@ -32,7 +32,7 @@ const AddServices = () => {
     console.log(serviceData);
 
     axios
-      .post("http://localhost:5000/api/services", serviceData)
+      .post("https://handymate-server.vercel.app/api/services", serviceData)
       .then((data) => {
         if (data.data.acknowledged) {
           toast.success("Service added successfully!");

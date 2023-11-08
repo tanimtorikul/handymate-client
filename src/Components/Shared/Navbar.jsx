@@ -86,48 +86,61 @@ const Navbar = () => {
                 All Services
               </NavLink>
             </li>
-            <li tabIndex={0}>
-              <details>
-                <summary>
-                  <NavLink
-                    to="/dashboard"
-                    activeClassName="text-black font-bold"
-                    className="text-black"
-                  >
-                    Dashboard
-                  </NavLink>
-                </summary>
-                <ul className="p-2 z-10 bg-[#404040]">
-                  <li>
+            {user?.email && (
+              <li tabIndex={0}>
+                <details>
+                  <summary>
                     <NavLink
-                      to="/my-services"
+                      to="/dashboard"
                       activeClassName="text-black font-bold"
                       className="text-black"
                     >
-                      My Services
+                      Dashboard
                     </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/add-services"
-                      activeClassName="text-black font-bold"
-                      className="text-black"
-                    >
-                      Add Services
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/my-schedules"
-                      activeClassName="text-red-500 font-bold"
-                      className="text-black"
-                    >
-                      My Schedules
-                    </NavLink>
-                  </li>
-                </ul>
-              </details>
-            </li>
+                  </summary>
+                  <ul className="p-2 z-10 bg-[#404040]">
+                    <li>
+                      <NavLink
+                        to="/my-services"
+                        activeClassName="text-black font-bold"
+                        className="text-black"
+                      >
+                        My Services
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/add-services"
+                        activeClassName="text-black font-bold"
+                        className="text-black"
+                      >
+                        Add Services
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/my-schedules"
+                        activeClassName="text-red-500 font-bold"
+                        className="text-black"
+                      >
+                        My Schedules
+                      </NavLink>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            )}
+            {user?.email && (
+              <li>
+                <NavLink
+                  to="/manage-services"
+                  activeClassName="text-black font-bold"
+                  className="text-black"
+                >
+                  Manage Services
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
