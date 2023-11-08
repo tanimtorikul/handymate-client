@@ -162,7 +162,7 @@ const AddServices = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="text-lg font-semibold mb-2">Service Area</span>
+              <span className="text-lg font-semibold mb-2">Service Provider's Description</span>
             </label>
             <input
               type="text"
