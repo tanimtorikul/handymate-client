@@ -26,9 +26,9 @@ const Register = () => {
       return;
     }
     setRegisterError("");
-    createUser(email, password)
+    createUser(email, password, name)
       .then((res) => {
-        // console.log(res.user);
+        console.log(res.user);
         toast.success('Welcome', user?.email);
         navigate('/');
 

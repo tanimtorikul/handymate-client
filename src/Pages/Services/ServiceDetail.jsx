@@ -54,7 +54,8 @@ const ServiceDetail = () => {
         }
       })
       .catch((error) => {
-        toast.error("An error occurred while processing your request.");
+        document.getElementById("my_modal_3").close();
+        toast.error("You have already booked this service!");
       });
   };
 
@@ -145,7 +146,7 @@ const ServiceDetail = () => {
                     Service Provider Email:
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     // readOnly
                     name="provider_email"
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -157,7 +158,7 @@ const ServiceDetail = () => {
                     User Email:
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     defaultValue={userEmail}
                     readOnly
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"

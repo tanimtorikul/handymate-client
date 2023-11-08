@@ -7,8 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans'],
-      },
+        firasans: ['Fira Sans', 'sans'],
+    },
+    
     },
   },
   plugins: [require("daisyui")],

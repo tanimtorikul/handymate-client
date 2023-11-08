@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
   return (
-    <div className="font-poppins px-2 md:p-0">
+    <div className="font-firasans px-2 md:p-0">
       <div className="">
         <Navbar></Navbar>
       </div>
