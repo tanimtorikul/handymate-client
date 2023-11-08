@@ -27,23 +27,23 @@ const PopularServices = () => {
             <div className="image-container relative h-48">
               <img
                 className="w-full h-full object-cover rounded-t-lg"
-                src={service.service_image}
-                alt={service.service_name}
+                src={service.serviceImage}
+                alt={service.serviceName}
               />
             </div>
             <div className="card-content p-4">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                {service.service_name}
+                {service.serviceName}
               </h3>
-              <p className="text-gray-600">{service.service_description}</p>
+              <p className="text-gray-600">{service.description}</p>
               <div className="provider-info flex items-center mt-3">
                 <img
                   src={service.service_provider_image}
                   className="w-8 h-8 rounded-full"
-                  alt={service.service_provider_name}
+                  alt={service.providerName}
                 />
                 <span className="text-gray-700 ml-2">
-                  {service.service_provider_name}
+                  {service.providerName}
                 </span>
               </div>
               <div className="price-button flex items-center justify-between mt-4">

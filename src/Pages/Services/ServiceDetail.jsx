@@ -13,12 +13,13 @@ const ServiceDetail = () => {
 
   const {
     _id,
-    service_image,
-    service_name,
-    service_description,
-    service_provider_name,
-    service_provider_image,
-    service_area,
+    serviceImage,
+    serviceName,
+    description,
+    providerName,
+    providerImage,
+    providerEmail,
+    serviceArea,
     price,
   } = loadedService;
 
@@ -31,11 +32,11 @@ const ServiceDetail = () => {
 
     const bookingData = {
       service_id: _id,
-      service_name,
-      service_image,
-      service_description,
-      service_provider_name,
-      service_provider_image,
+      serviceName,
+      serviceImage,
+      description,
+      providerName,
+      providerImage,
       date,
       instruction,
       price,
@@ -62,30 +63,30 @@ const ServiceDetail = () => {
   return (
     <div className="max-w-7xl mx-auto p-4">
       <Helmet>
-        <title>HandyMate | {service_name} Details</title>
+        <title>HandyMate | {serviceName} Details</title>
       </Helmet>
       <div className="grid grid-cols-1  md:grid-cols-1 gap-8">
         <div className="bg-white p-6 rounded-lg">
           <h2 className="text-3xl font-semibold mb-4">
-            Details about {service_name}
+            Details about {serviceName}
           </h2>
           <img
-            src={service_image}
-            alt={service_name}
+            src={serviceImage}
+            alt={serviceName}
             className="mb-4 rounded-lg w-2/3"
           />
           <p className="text-xl font-semibold mb-2">
-            Service Name: {service_name}
+            Service Name: {serviceName}
           </p>
-          <p className="mb-4">{service_description}</p>
+          <p className="mb-4">{description}</p>
           <div className="flex items-center mb-4">
             <img
-              src={service_provider_image}
-              alt={service_provider_name}
+              src={providerImage}
+              alt={providerName}
               className="w-12 h-12 rounded-full mr-4"
             />
             <p className="text-lg font-semibold">
-              Service Provider: {service_provider_name}
+              Service Provider: {providerName}
             </p>
           </div>
           <p className="text-2xl text-green-600 font-semibold mb-4">
@@ -111,7 +112,7 @@ const ServiceDetail = () => {
                 className="p-2 bg-white shadow-lg rounded-lg"
               >
                 <h3 className="font-bold text-lg md:text-xl text-center text-[#25ad50de]">
-                  Book {service_name}
+                  Book {serviceName}
                 </h3>
 
                 <div className="form-group mb-4">
@@ -120,7 +121,7 @@ const ServiceDetail = () => {
                   </label>
                   <input
                     type="text"
-                    defaultValue={service_name}
+                    defaultValue={serviceName}
                     readOnly
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
@@ -132,7 +133,7 @@ const ServiceDetail = () => {
                   </label>
                   <input
                     type="text"
-                    defaultValue={service_image}
+                    defaultValue={serviceImage}
                     readOnly
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
@@ -147,7 +148,8 @@ const ServiceDetail = () => {
                   </label>
                   <input
                     type="email"
-                    // readOnly
+                    readOnly
+                    defaultValue={providerEmail}
                     name="provider_email"
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
@@ -217,9 +219,9 @@ const ServiceDetail = () => {
 
         <div className="bg-gray-100 p-6 rounded-lg">
           <h2 className="text-3xl font-semibold mb-4">Service Provider</h2>
-          <p className="mb-2">Name: {service_provider_name}</p>
-          <p className="mb-2">Location: {service_area}</p>
-          <p>Description: {service_provider_name}</p>
+          <p className="mb-2">Name: {providerName}</p>
+          <p className="mb-2">Location: {serviceArea}</p>
+          <p>Description: {providerName}</p>
         </div>
       </div>
     </div>

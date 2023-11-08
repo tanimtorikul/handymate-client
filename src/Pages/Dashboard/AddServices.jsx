@@ -1,12 +1,13 @@
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const AddServices = () => {
   const { user } = useAuth();
-  const userEmail = user?.email;
-  const userName = user?.displayName;
-  const userImage = user?.photoURL;
+  const providerEmail = user?.email;
+  const providerName = user?.displayName;
+  const providerImage = user?.photoURL;
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,23 +16,25 @@ const AddServices = () => {
     const price = form.price.value;
     const description = form.description.value;
     const serviceArea = form.serviceArea.value;
+    const providerDesc = form.providerDesc.value;
 
     const serviceData = {
       serviceName,
       serviceImage,
       description,
-      userName,
-      userImage,
-      userEmail,
+      providerName,
+      providerImage,
+      providerEmail,
       price,
       serviceArea,
+      providerDesc,
     };
     console.log(serviceData);
 
     axios
       .post("http://localhost:5000/api/services", serviceData)
-      .then((response) => {
-        if (response.status === 200) {
+      .then((data) => {
+        if (data.data.acknowledged) {
           toast.success("Service added successfully!");
           form.reset();
         } else {
@@ -42,6 +45,9 @@ const AddServices = () => {
 
   return (
     <div className="hero px-6">
+      <Helmet>
+        <title>HandyMate | Add a Service</title>
+      </Helmet>
       <div className="card w-full max-w-4xl shadow-2xl">
         <form onSubmit={handleSubmit} className="card-body w-full mx-auto">
           <h2 className="text-3xl text-center font-semibold mb-6">
@@ -77,24 +83,28 @@ const AddServices = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="text-lg font-semibold mb-2">Your name</span>
+                <span className="text-lg font-semibold mb-2">
+                  Provider's name
+                </span>
               </label>
               <input
                 type="text"
-                name="userName"
-                defaultValue={userName}
+                name="proividerName"
+                defaultValue={providerName}
                 className="input rounded-lg bg-gray-200 cursor-not-allowed mb-2"
                 readOnly
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="text-lg font-semibold mb-2">Your email</span>
+                <span className="text-lg font-semibold mb-2">
+                  Provider's email
+                </span>
               </label>
               <input
                 type="email"
-                name="userEmail"
-                defaultValue={userEmail}
+                name="providerEmail"
+                defaultValue={providerEmail}
                 className="input rounded-lg bg-gray-200 mb-2 cursor-not-allowed"
                 readOnly
               />
@@ -114,13 +124,13 @@ const AddServices = () => {
             <div className="form-control">
               <label className="label">
                 <span className="text-lg font-semibold mb-2">
-                  Your Image URL
+                  Provider's Image URL
                 </span>
               </label>
               <input
                 type="text"
-                name="userImage"
-                defaultValue={userImage}
+                name="providerImg"
+                defaultValue={providerImage}
                 className="input rounded-lg bg-gray-200 mb-2 cursor-not-allowed"
                 readOnly
               />
@@ -149,6 +159,18 @@ const AddServices = () => {
                 required
               />
             </div>
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="text-lg font-semibold mb-2">Service Area</span>
+            </label>
+            <input
+              type="text"
+              name="providerDesc"
+              placeholder="About Service Provider"
+              className="input rounded-lg bg-gray-200 mb-2"
+              required
+            />
           </div>
           <div className="form-control mt-6">
             <button
