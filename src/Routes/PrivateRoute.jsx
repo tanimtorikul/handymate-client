@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import Loading from "../Components/Loading";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -7,7 +8,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="flex justify-center min-h-[500px]">
-        <span className="loading loading-dots loading-lg"></span>
+        <Loading/>
       </div>
     );
   }

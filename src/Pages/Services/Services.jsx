@@ -69,13 +69,15 @@ const Services = () => {
         </div>
       </div>
       <div className="grid md:grid-cols-3 gap-5 md:max-w-[1200px] mx-auto py-12">
-        {filteredServices.length > 0
-          ? filteredServices.map((service) => (
-              <ServiceCard key={service._id} service={service} />
-            ))
-          : services.map((service) => (
-              <ServiceCard key={service._id} service={service} />
-            ))}
+        {filteredServices.length > 0 ? (
+          filteredServices.map((service) => (
+            <ServiceCard key={service._id} service={service} />
+          ))
+        ) : (
+          <div className="text-center font-bold text-3xl text-gray-800">
+            <p>No matching services found.</p>
+          </div>
+        )}
       </div>
     </div>
   );
