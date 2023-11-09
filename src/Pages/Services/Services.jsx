@@ -13,10 +13,12 @@ const Services = () => {
   const [servicesPerPage] = useState(6);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/services").then((data) => {
-      setServices(data.data);
-      setFilteredServices(data.data);
-    });
+    axios
+      .get("https://handymate-server.vercel.app/api/services")
+      .then((data) => {
+        setServices(data.data);
+        setFilteredServices(data.data);
+      });
   }, []);
 
   useEffect(() => {

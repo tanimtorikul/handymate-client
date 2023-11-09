@@ -14,7 +14,9 @@ const ManageServices = () => {
   useEffect(() => {
     if (providerEmail) {
       axios
-        .get(`http://localhost:5000/api/services/provider/${providerEmail}`)
+        .get(
+          `https://handymate-server.vercel.app/api/services/provider/${providerEmail}`
+        )
         .then((data) => {
           setUserServices(data.data);
         });
@@ -35,7 +37,7 @@ const ManageServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/api/services/${_id}`, {
+        fetch(`https://handymate-server.vercel.app/api/services/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

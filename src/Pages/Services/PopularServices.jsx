@@ -1,6 +1,6 @@
 import Aos from "aos";
 import axios from "axios";
-import 'aos/dist/aos.css';
+import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,9 +8,11 @@ const PopularServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/services").then((response) => {
-      setServices(response.data);
-    });
+    axios
+      .get("https://handymate-server.vercel.app/api/services")
+      .then((response) => {
+        setServices(response.data);
+      });
   }, []);
   useEffect(() => {
     Aos.init();
@@ -27,7 +29,7 @@ const PopularServices = () => {
         {popularServices.map((service) => (
           <div
             key={service._id}
-            className="card bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out" 
+            className="card bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"
             data-aos="zoom-in-down"
             data-aos-anchor="#example-anchor"
             data-aos-offset="500"

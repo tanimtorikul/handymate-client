@@ -35,7 +35,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/services/${params.serviceId}`),
+          fetch(
+            `https://handymate-server.vercel.app/api/services/${params.serviceId}`
+          ),
       },
       {
         path: "login",
@@ -77,7 +79,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/services/${params.serviceId}`),
+          fetch(
+            `https://handymate-server.vercel.app/api/services/${params.serviceId}`
+          ),
       },
     ],
   },

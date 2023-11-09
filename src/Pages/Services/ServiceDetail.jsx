@@ -51,7 +51,7 @@ const ServiceDetail = () => {
     console.log(bookingData);
 
     axios
-      .post("http://localhost:5000/api/bookings", bookingData)
+      .post("https://handymate-server.vercel.app/api/bookings", bookingData)
       .then((data) => {
         console.log(data.data);
         if (data.data.acknowledged) {
@@ -68,7 +68,7 @@ const ServiceDetail = () => {
   const fetchProviderServices = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/services/provider/${loadedService.providerEmail}`
+        `https://handymate-server.vercel.app/api/services/provider/${loadedService.providerEmail}`
       );
       setProviderServices(response.data);
     } catch (error) {

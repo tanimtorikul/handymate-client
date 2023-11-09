@@ -9,7 +9,7 @@ const MySchedules = () => {
   useEffect(() => {
     const userEmail = user?.email;
     axios
-      .get(`http://localhost:5000/api/bookings/${userEmail}`)
+      .get(`https://handymate-server.vercel.app/api/bookings/${userEmail}`)
       .then((data) => {
         setBookedServices(data.data);
       });
@@ -17,12 +17,14 @@ const MySchedules = () => {
 
   const handleStatusChange = (bookingId, newStatus) => {
     axios
-      .put(`http://localhost:5000/api/bookings/${bookingId}`, {
+      .put(`https://handymate-server.vercel.app/api/bookings/${bookingId}`, {
         status: newStatus,
       })
       .then(() => {
         axios
-          .get(`http://localhost:5000/api/bookings/${user?.email}`)
+          .get(
+            `https://handymate-server.vercel.app/api/bookings/${user?.email}`
+          )
           .then((data) => {
             setBookedServices(data.data);
           });

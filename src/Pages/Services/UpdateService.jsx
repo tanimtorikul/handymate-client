@@ -34,7 +34,7 @@ const UpdateService = () => {
     };
     console.log(updatedService);
 
-    fetch(`http://localhost:5000/api/services/${_id}`, {
+    fetch(`https://handymate-server.vercel.app/api/services/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -55,7 +55,7 @@ const UpdateService = () => {
         }
       });
   };
-  
+
   return (
     <div>
       <Helmet>
