@@ -2,6 +2,7 @@ import app from "../../assets/app.png";
 import iphone from "../../assets/iphone.png";
 import appstore from "../../assets/appstore.png";
 
+
 const AppDownload = () => {
   return (
     <div className="my-10 pb-12 pt-16">
