@@ -4,6 +4,9 @@
 
 HandyMate is an innovative offline service sharing platform designed to connect service providers with users seamlessly. The client-side of the application is built using React, Tailwind CSS, and various technologies to provide a dynamic and user-friendly experience.
 
+**Live Site:** [HandyMate Live](https://handymate-1b121.web.app/)
+
+
 ## Key Features
 
 - **Attractive User Interface**: HandyMate boasts a user-friendly interface designed with React, ensuring a seamless and enjoyable experience for users navigating through available services.
