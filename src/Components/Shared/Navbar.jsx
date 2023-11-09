@@ -49,15 +49,14 @@ const Navbar = () => {
                     <NavLink to="/add-services">Add Services</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/my-services">My Services</NavLink>
+                    <NavLink to="/manage-services">Manage Services</NavLink>
                   </li>
                 </ul>
               </li>
-              
+
               <li>
-                <NavLink to="/dashboard/all-services">All Services</NavLink>
+                <NavLink to="/services">All Services</NavLink>
               </li>
-              
             </ul>
           </div>
           <NavLink
@@ -99,15 +98,6 @@ const Navbar = () => {
                     </NavLink>
                   </summary>
                   <ul className="p-2 z-10 bg-white">
-                    <li>
-                      <NavLink
-                        to="/my-services"
-                        activeclassname="text-black font-bold"
-                        className="text-black"
-                      >
-                        My Services
-                      </NavLink>
-                    </li>
                     <li>
                       <NavLink
                         to="/add-services"
