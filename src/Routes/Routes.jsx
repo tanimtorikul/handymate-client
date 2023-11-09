@@ -60,11 +60,19 @@ const router = createBrowserRouter([
       },
       {
         path: "my-schedules",
-        element: <MySchedules></MySchedules>,
+        element: (
+          <PrivateRoute>
+            <MySchedules></MySchedules>
+          </PrivateRoute>
+        ),
       },
       {
         path: "manage-services",
-        element: <ManageServices></ManageServices>,
+        element: (
+          <PrivateRoute>
+            <ManageServices></ManageServices>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateService/:serviceId",

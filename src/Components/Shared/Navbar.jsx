@@ -92,14 +92,13 @@ const Navbar = () => {
                 <details>
                   <summary>
                     <NavLink
-                      to="/dashboard"
                       activeclassname="text-black font-bold"
                       className="text-black"
                     >
                       Dashboard
                     </NavLink>
                   </summary>
-                  <ul className="p-2 z-10 bg-[#404040]">
+                  <ul className="p-2 z-10 bg-white">
                     <li>
                       <NavLink
                         to="/my-services"

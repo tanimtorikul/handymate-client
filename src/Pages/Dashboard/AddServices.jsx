@@ -32,15 +32,20 @@ const AddServices = () => {
     console.log(serviceData);
 
     axios
-      .post("http://localhost:5000/api/services", serviceData)
-      .then((data) => {
-        if (data.data.acknowledged) {
-          toast.success("Service added successfully!");
-          form.reset();
-        } else {
-          toast.error("Failed to add the service. Please try again later.");
-        }
-      });
+    .post("http://localhost:5000/api/services", serviceData)
+    .then((response) => {
+      if (response.data.success) {
+        toast.success("Service added successfully!");
+        form.reset();
+      } else {
+        toast.error("Failed to add the service. Please try again later.");
+      }
+    })
+    .catch((error) => {
+      console.error("An error occurred:", error);
+      toast.error("An error occurred. Please try again later.");
+    });
+  
   };
 
   return (
@@ -84,7 +89,7 @@ const AddServices = () => {
             <div className="form-control">
               <label className="label">
                 <span className="text-lg font-semibold mb-2">
-                  Provider's name
+                  Provider name
                 </span>
               </label>
               <input
@@ -98,7 +103,7 @@ const AddServices = () => {
             <div className="form-control">
               <label className="label">
                 <span className="text-lg font-semibold mb-2">
-                  Provider's email
+                  Provider email
                 </span>
               </label>
               <input
@@ -124,7 +129,7 @@ const AddServices = () => {
             <div className="form-control">
               <label className="label">
                 <span className="text-lg font-semibold mb-2">
-                  Provider's Image URL
+                  Provider Image URL
                 </span>
               </label>
               <input
@@ -163,7 +168,7 @@ const AddServices = () => {
           <div className="form-control">
             <label className="label">
               <span className="text-lg font-semibold mb-2">
-                Service Provider's Description
+                Service Provider Description
               </span>
             </label>
             <input

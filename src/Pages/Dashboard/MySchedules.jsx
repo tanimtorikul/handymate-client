@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios"; 
+import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
 const MySchedules = () => {
@@ -9,11 +9,8 @@ const MySchedules = () => {
     const userEmail = user?.email;
     axios
       .get(`http://localhost:5000/api/bookings/${userEmail}`)
-      .then((response) => {
-        setBookedServices(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching booked services:", error);
+      .then((data) => {
+        setBookedServices(data.data);
       });
   }, [user?.email]);
 
@@ -59,7 +56,9 @@ const MySchedules = () => {
           ))}
         </div>
       ) : (
-        <p>No services booked.</p>
+        <div className="flex justify-center">
+            <p>No services booked.</p>
+        </div>
       )}
     </div>
   );

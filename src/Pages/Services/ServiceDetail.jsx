@@ -1,11 +1,14 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 
 const ServiceDetail = () => {
   const loadedService = useLoaderData();
+  const [providerServices, setProviderServices] = useState([]);
+
   const { user } = useAuth();
   const userEmail = user?.email;
   //   console.log(user);
@@ -21,6 +24,7 @@ const ServiceDetail = () => {
     providerEmail,
     serviceArea,
     price,
+    providerDesc,
   } = loadedService;
 
   const handleBooking = (e) => {
@@ -41,6 +45,7 @@ const ServiceDetail = () => {
       instruction,
       price,
       userEmail,
+
       provider_email,
     };
     console.log(bookingData);
@@ -59,6 +64,22 @@ const ServiceDetail = () => {
         toast.error("You have already booked this service!");
       });
   };
+
+  const fetchProviderServices = async () => {
+    try {
+      const response = await axios.get(
+        `/api/services/provider/${loadedService.providerEmail}`
+      );
+      setProviderServices(response.data);
+    } catch (error) {
+      console.error("Error fetching provider services:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Fetch services by the same provider when the component mounts
+    fetchProviderServices();
+  }, [loadedService.providerEmail]);
 
   return (
     <div className="max-w-7xl mx-auto p-4">
@@ -218,12 +239,45 @@ const ServiceDetail = () => {
           </dialog>
         </div>
 
-        <div className="bg-gray-100 p-6 rounded-lg">
-          <h2 className="text-3xl font-semibold mb-4">Service Provider</h2>
+        <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-4">
+          <h2 className="text-3xl font-semibold mb-4">
+            About Service Provider
+          </h2>
           <p className="mb-2">Name: {providerName}</p>
           <p className="mb-2">Location: {serviceArea}</p>
-          <p>Description: {providerName}</p>
+          <p>Description: {providerDesc}</p>
         </div>
+        {providerServices.length > 0 && (
+          <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-4">
+            <h2 className="text-3xl font-semibold mb-4">
+              Other Services by {loadedService.providerName}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {providerServices.map((service) => (
+                <div
+                  key={service._id}
+                  className="bg-white p-4 rounded-lg shadow-lg"
+                >
+                  <h3 className="text-xl font-semibold mb-2">
+                    {service.serviceName}
+                  </h3>
+                  <img
+                    src={service.serviceImage}
+                    alt={service.serviceName}
+                    className="mb-2 rounded-lg w-full"
+                  />
+                  <p className="text-sm mb-2">{service.description}</p>
+                  <Link
+                    to={`/service/${service._id}`}
+                    className="btn btn-sm w-full"
+                  >
+                    View Details
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
