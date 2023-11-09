@@ -68,7 +68,7 @@ const ServiceDetail = () => {
   const fetchProviderServices = async () => {
     try {
       const response = await axios.get(
-        `/api/services/provider/${loadedService.providerEmail}`
+        `http://localhost:5000/api/services/provider/${loadedService.providerEmail}`
       );
       setProviderServices(response.data);
     } catch (error) {
@@ -77,16 +77,17 @@ const ServiceDetail = () => {
   };
 
   useEffect(() => {
-    // Fetch services by the same provider when the component mounts
-    fetchProviderServices();
-  }, [loadedService.providerEmail]);
+    if (loadedService && loadedService.providerEmail) {
+      fetchProviderServices();
+    }
+  }, [loadedService]);
 
   return (
     <div className="max-w-7xl mx-auto p-4">
       <Helmet>
         <title>HandyMate | {serviceName} Details</title>
       </Helmet>
-      <div className="grid grid-cols-1  md:grid-cols-1 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
         <div className="bg-white p-6 rounded-lg">
           <h2 className="text-3xl font-semibold mb-4">
             Details about {serviceName}
@@ -247,40 +248,48 @@ const ServiceDetail = () => {
           <p className="mb-2">Location: {serviceArea}</p>
           <p>Description: {providerDesc}</p>
         </div>
-        {providerServices.length > 0 && (
+
+        {providerServices.length > 0 ? (
           <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-4">
             <h2 className="text-3xl font-semibold mb-4">
               Other Services by {loadedService.providerName}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {providerServices.map((service) => (
-                <div
+                <Link
+                  to={`/serviceDetail/${service._id}`}
                   key={service._id}
-                  className="bg-white p-4 rounded-lg shadow-lg"
+                  className="text-decoration-none"
                 >
-                  <h3 className="text-xl font-semibold mb-2">
-                    {service.serviceName}
-                  </h3>
-                  <img
-                    src={service.serviceImage}
-                    alt={service.serviceName}
-                    className="mb-2 rounded-lg w-full"
-                  />
-                  <p className="text-sm mb-2">{service.description}</p>
-                  <Link
-                    to={`/service/${service._id}`}
-                    className="btn btn-sm w-full"
-                  >
-                    View Details
-                  </Link>
-                </div>
+                  <div className="bg-white p-4 rounded-lg shadow-lg cursor-pointer">
+                    <h3 className="text-xl font-semibold mb-2">
+                      {service.serviceName}
+                    </h3>
+                    <img
+                      src={service.serviceImage}
+                      alt={service.serviceName}
+                      className="mb-2 rounded-lg w-full"
+                    />
+                    <p className="text-sm mb-2">{service.description}</p>
+                    <button className="btn btn-sm w-full">View Details</button>
+                  </div>
+                </Link>
               ))}
             </div>
+          </div>
+        ) : (
+          <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-4">
+            <p className="text-xl font-semibold mb-4">
+              {loadedService.providerName} doesnt offer any other services at
+              the moment.
+            </p>
           </div>
         )}
       </div>
     </div>
   );
+
+  // ...
 };
 
 export default ServiceDetail;
