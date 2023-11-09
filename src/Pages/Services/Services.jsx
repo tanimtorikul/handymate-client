@@ -9,6 +9,8 @@ const Services = () => {
   const [services, setServices] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredServices, setFilteredServices] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [servicesPerPage] = useState(6);
 
   useEffect(() => {
     axios.get("http://localhost:5000/api/services").then((data) => {
@@ -16,6 +18,7 @@ const Services = () => {
       setFilteredServices(data.data);
     });
   }, []);
+
   useEffect(() => {
     Aos.init();
   }, []);
@@ -26,15 +29,24 @@ const Services = () => {
   };
 
   const handleSearch = () => {
-    console.log("search value", searchValue);
     const filteredServices = services.filter((service) => {
       const serviceName = service.serviceName?.toLowerCase();
       const search = searchValue.toLowerCase();
-      console.log("serviceName:", serviceName);
       return serviceName?.includes(search);
     });
     setFilteredServices(filteredServices);
+    setCurrentPage(1);
   };
+
+  // Pagination
+  const indexOfLastService = currentPage * servicesPerPage;
+  const indexOfFirstService = indexOfLastService - servicesPerPage;
+  const currentServices = filteredServices.slice(
+    indexOfFirstService,
+    indexOfLastService
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -49,8 +61,10 @@ const Services = () => {
                 Discover Our Services
               </h1>
 
-              <p className="text-lg mb-6">
-                Elevate your business with insights from industry experts.
+              <p className="text-lg mb-6 ">
+                Explore our top-notch handyman services designed to meet your
+                needs. Our experts are ready to enhance your space with skillful
+                solutions.
               </p>
 
               <div className="mx-auto max-w-xl relative">
@@ -81,8 +95,8 @@ const Services = () => {
         data-aos-offset="500"
         data-aos-duration="2000"
       >
-        {filteredServices.length > 0 ? (
-          filteredServices.map((service) => (
+        {currentServices.length > 0 ? (
+          currentServices.map((service) => (
             <ServiceCard key={service._id} service={service} />
           ))
         ) : (
@@ -90,6 +104,27 @@ const Services = () => {
             <p>No matching services found.</p>
           </div>
         )}
+      </div>
+      <div className="flex justify-center">
+        <ul className="flex space-x-2">
+          {Array.from(
+            { length: Math.ceil(filteredServices.length / servicesPerPage) },
+            (_, index) => (
+              <li key={index}>
+                <button
+                  onClick={() => paginate(index + 1)}
+                  className={`${
+                    currentPage === index + 1
+                      ? "bg-green-500 text-white"
+                      : "bg-gray-200 text-gray-800"
+                  } py-2 px-4 rounded`}
+                >
+                  {index + 1}
+                </button>
+              </li>
+            )
+          )}
+        </ul>
       </div>
     </div>
   );
