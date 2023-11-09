@@ -1,4 +1,6 @@
+import Aos from "aos";
 import axios from "axios";
+import 'aos/dist/aos.css';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,6 +11,9 @@ const PopularServices = () => {
     axios.get("http://localhost:5000/api/services").then((response) => {
       setServices(response.data);
     });
+  }, []);
+  useEffect(() => {
+    Aos.init();
   }, []);
 
   const popularServices = services.slice(0, 4);
@@ -22,7 +27,11 @@ const PopularServices = () => {
         {popularServices.map((service) => (
           <div
             key={service._id}
-            className="card bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"
+            className="card bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out" 
+            data-aos="zoom-in-down"
+            data-aos-anchor="#example-anchor"
+            data-aos-offset="500"
+            data-aos-duration="2000"
           >
             <div className="image-container relative h-48">
               <img

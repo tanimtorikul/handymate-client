@@ -1,4 +1,6 @@
 import axios from "axios";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 import { Helmet } from "react-helmet-async";
@@ -14,6 +16,9 @@ const Services = () => {
       setFilteredServices(data.data);
     });
   }, []);
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   const handleInputChange = (event) => {
     event.preventDefault();
@@ -23,10 +28,10 @@ const Services = () => {
   const handleSearch = () => {
     console.log("search value", searchValue);
     const filteredServices = services.filter((service) => {
-      const serviceName = service.serviceName.toLowerCase();
+      const serviceName = service.serviceName?.toLowerCase();
       const search = searchValue.toLowerCase();
       console.log("serviceName:", serviceName);
-      return serviceName.includes(search);
+      return serviceName?.includes(search);
     });
     setFilteredServices(filteredServices);
   };
@@ -69,7 +74,13 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-5 md:max-w-[1200px] mx-auto py-12">
+      <div
+        className="grid md:grid-cols-3 gap-5 md:max-w-[1200px] mx-auto py-12"
+        data-aos="zoom-out-up"
+        data-aos-anchor="#example-anchor"
+        data-aos-offset="500"
+        data-aos-duration="2000"
+      >
         {filteredServices.length > 0 ? (
           filteredServices.map((service) => (
             <ServiceCard key={service._id} service={service} />

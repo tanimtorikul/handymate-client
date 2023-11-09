@@ -32,20 +32,19 @@ const AddServices = () => {
     console.log(serviceData);
 
     axios
-    .post("http://localhost:5000/api/services", serviceData)
-    .then((response) => {
-      if (response.data.success) {
-        toast.success("Service added successfully!");
-        form.reset();
-      } else {
-        toast.error("Failed to add the service. Please try again later.");
-      }
-    })
-    .catch((error) => {
-      console.error("An error occurred:", error);
-      toast.error("An error occurred. Please try again later.");
-    });
-  
+      .post("http://localhost:5000/api/services", serviceData)
+      .then((response) => {
+        if (response.data.success) {
+          toast.success("Service added successfully!");
+          form.reset();
+        } else {
+          toast.error("Failed to add the service. Please try again later.");
+        }
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+        toast.error("An error occurred. Please try again later.");
+      });
   };
 
   return (
@@ -55,14 +54,14 @@ const AddServices = () => {
       </Helmet>
       <div className="card w-full max-w-4xl shadow-2xl">
         <form onSubmit={handleSubmit} className="card-body w-full mx-auto">
-          <h2 className="text-3xl text-center font-semibold mb-6">
+          <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
             Add a Service
           </h2>
           <div className="border border-gray-300 mb-6"></div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <div className="form-control">
               <label className="label">
-                <span className="text-lg font-semibold mb-2">
+                <span className="md:text-lg font-semibold mb-2">
                   Photo URL of the Service
                 </span>
               </label>

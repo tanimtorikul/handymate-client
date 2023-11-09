@@ -9,7 +9,6 @@ import PrivateRoute from "./PrivateRoute";
 import Error from "../Pages/Error";
 import ServiceDetail from "../Pages/Services/ServiceDetail";
 import AddServices from "../Pages/Dashboard/AddServices";
-import MyServices from "../Pages/Dashboard/MyServices";
 import MySchedules from "../Pages/Dashboard/MySchedules";
 import ManageServices from "../Pages/Services/ManageServices";
 import UpdateService from "../Pages/Services/UpdateService";
@@ -45,10 +44,6 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
-      },
-      {
-        path: "my-services",
-        element: <MyServices></MyServices>,
       },
       {
         path: "add-services",

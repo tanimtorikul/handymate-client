@@ -5,7 +5,6 @@ import WhyUs from "./WhyUs";
 import Contact from "./Contact";
 import AppDownload from "./AppDownload";
 
-
 const Home = () => {
   return (
     <div>
