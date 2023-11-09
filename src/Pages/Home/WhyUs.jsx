@@ -7,7 +7,7 @@ const WhyUs = () => {
         <p className="mb-4 py-4 text-3xl font-semibold">Why Choose Us</p>
         <h2 className="text-4xl font-medium">Because we are the best..</h2>
       </div>
-      <div className="bg-[#F4F5F8]">
+      <div className="">
         <div>
           <div className="flex flex-wrap p-7 justify-center items-center rounded-lg text-white text-center">
             <div className="w-1/2 md:w-1/4 px-4 mb-4">
