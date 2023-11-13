@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const handleLogout = () => {
@@ -50,6 +49,9 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink to="/manage-services">Manage Services</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/my-schedules">My Schedules</NavLink>
                   </li>
                 </ul>
               </li>

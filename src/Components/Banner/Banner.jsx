@@ -9,7 +9,7 @@ const Banner = () => {
       autoPlay={true}
       interval={2000}
       infiniteLoop={true}
-      className="w-full max-w-7xl mx-auto rounded-lg md:rounded-none"
+      className="w-full text-center max-w-7xl mx-auto rounded-lg md:rounded-none"
     >
       <div className="carousel-item relative h-[400px] md:h-[600px]">
         <img

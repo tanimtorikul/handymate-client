@@ -79,7 +79,7 @@ const Services = () => {
                     onChange={handleInputChange}
                   />
                   <button
-                    className="bg-blue-500 text-white py-2 px-4 rounded-r"
+                    className="bg-green-500 text-white py-2 px-4 rounded-r"
                     onClick={handleSearch}
                   >
                     Search

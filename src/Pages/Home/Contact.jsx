@@ -1,5 +1,6 @@
 
-import cta from '../../assets/servicee.jpg'; // Import the image
+import { Link } from 'react-router-dom';
+import cta from '../../assets/servicee.jpg'; 
 
 const Contact = () => {
   return (
@@ -16,11 +17,13 @@ const Contact = () => {
           <p className="text-lg text-white mb-6">
             Elevate your space with our expert handyman services.
           </p>
+          <Link to="/contactform">
           <button
             className="bg-white text-[#4h4h44h] py-3 px-8 rounded-full font-semibold hover:bg-blue-200 hover:text-blue-800 shadow-md transform hover:scale-105 transition-transform"
           >
             Contact Us
           </button>
+          </Link>
         </div>
       </div>
     </div>

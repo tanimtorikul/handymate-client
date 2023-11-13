@@ -45,7 +45,6 @@ const ServiceDetail = () => {
       instruction,
       price,
       userEmail,
-
       provider_email,
     };
     console.log(bookingData);
@@ -54,14 +53,18 @@ const ServiceDetail = () => {
       .post("https://handymate-server.vercel.app/api/bookings", bookingData)
       .then((data) => {
         console.log(data.data);
-        if (data.data.acknowledged) {
+        if (data.data.insertedId) {
           document.getElementById("my_modal_3").close();
           toast.success("Your Booking has been successfully confirmed!");
+        } else {
+          document.getElementById("my_modal_3").close();
+          toast.error("Your have already booked this");
         }
       })
       .catch((error) => {
+        console.log(error);
         document.getElementById("my_modal_3").close();
-        toast.error("You have already booked this service!");
+        toast.error("Something wrong");
       });
   };
 
@@ -288,8 +291,6 @@ const ServiceDetail = () => {
       </div>
     </div>
   );
-
-  // ...
 };
 
 export default ServiceDetail;

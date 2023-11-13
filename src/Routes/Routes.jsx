@@ -12,6 +12,7 @@ import AddServices from "../Pages/Dashboard/AddServices";
 import MySchedules from "../Pages/Dashboard/MySchedules";
 import ManageServices from "../Pages/Services/ManageServices";
 import UpdateService from "../Pages/Services/UpdateService";
+import ContactForm from "../Pages/ContactForm";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+      {
+        path: "contactform",
+        element: <ContactForm></ContactForm>,
       },
       {
         path: "add-services",

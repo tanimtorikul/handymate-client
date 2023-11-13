@@ -34,16 +34,14 @@ const AddServices = () => {
     axios
       .post("https://handymate-server.vercel.app/api/services", serviceData)
       .then((response) => {
-        if (response.data.success) {
+        if (response.data.insertedId) {
           toast.success("Service added successfully!");
+
           form.reset();
+          console.log(response.data);
         } else {
           toast.error("Failed to add the service. Please try again later.");
         }
-      })
-      .catch((error) => {
-        console.error("An error occurred:", error);
-        toast.error("An error occurred. Please try again later.");
       });
   };
 

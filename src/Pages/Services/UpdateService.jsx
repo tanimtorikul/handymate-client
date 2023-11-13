@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
@@ -53,6 +52,19 @@ const UpdateService = () => {
             },
           });
         }
+      })
+      .catch((error) => {
+        console.error("Error during service update:", error);
+        toast.error(
+          "An error occurred while updating the service. Please try again later.",
+          {
+            style: {
+              background: "#FF4040",
+              color: "white",
+              border: "none",
+            },
+          }
+        );
       });
   };
 

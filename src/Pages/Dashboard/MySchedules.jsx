@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const MySchedules = () => {
   const [bookedServices, setBookedServices] = useState([]);
@@ -44,6 +45,9 @@ const MySchedules = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>HandyMate | My Schedules</title>
+      </Helmet>
       <h2 className="text-center text-3xl font-bold">My Schedules</h2>
 
       <h2 className="text-2xl text-center font-medium my-4">My bookings</h2>
