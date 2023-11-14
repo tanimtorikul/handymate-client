@@ -48,44 +48,57 @@ const MySchedules = () => {
       <Helmet>
         <title>HandyMate | My Schedules</title>
       </Helmet>
-      <h2 className="text-center text-3xl font-bold">My Schedules</h2>
 
       <h2 className="text-2xl text-center font-medium my-4">My bookings</h2>
       {myBookings.length > 0 ? (
-        <div className="max-w-7xl mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {myBookings.map((service) => (
             <div
               key={service._id}
-              className="bg-gray-100 p-4 rounded-lg shadow-lg"
+              className="max-w-screen-xl mx-auto px-4 py-6 rounded-lg bg-white shadow-lg flex items-center justify-between gap-8 mb-8"
             >
-              <img
-                src={service.serviceImage}
-                alt={service.serviceName}
-                className="w-48 h-48 object-cover rounded-full mx-auto mb-4"
-              />
-              <h3 className="text-xl font-semibold text-center mb-2">
-                {service.serviceName}
-              </h3>
-              <p className="text-gray-600 text-center mb-4">
-                {service.description}
-              </p>
-              <div className="flex items-center justify-between">
+              <div className="flex-shrink-0">
+                <img
+                  src={service.serviceImage}
+                  alt="Service Image"
+                  className="w-64 h-72 object-cover rounded-md"
+                />
+              </div>
+
+              <div className="flex-grow">
+                <h2 className="text-2xl font-semibold mb-4">
+                  {service.serviceName}
+                </h2>
+                <p className="text-gray-600 mb-6">
+                  <span className="block font-medium text-lg">
+                    Price: ${service.price}
+                  </span>
+                  <span className="block text-sm">
+                    Booking Date: {service.date}
+                  </span>
+                  <span className="block text-sm">
+                    Description: {service.description}
+                  </span>
+                  <span className="block text-sm">
+                    Instruction: {service.instruction}
+                  </span>
+                </p>
                 <div className="flex items-center">
                   <img
                     src={service.providerImage}
-                    alt={service.providerName}
-                    className="w-10 h-10 rounded-full"
+                    alt="Provider Image"
+                    className="w-12 h-12 object-cover rounded-full mr-4"
                   />
-                  <p className="ml-2">{service.providerName}</p>
+                  <div>
+                    <p className="text-gray-800 font-semibold text-lg">
+                      {service.providerName}
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      {service.providerTitle}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-gray-600">Date: {service.date}</p>
               </div>
-              <p className="text-gray-600 mt-4">
-                Instruction: {service.instruction}
-              </p>
-              <p className="text-lg font-bold text-green-600 mt-2">
-                {service.price}
-              </p>
             </div>
           ))}
         </div>

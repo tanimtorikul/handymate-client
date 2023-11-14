@@ -7,10 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        firasans: ['Fira Sans', 'sans'],
-    },
-    
+        roboto: ['Roboto', 'sans-serif'], 
+      },
     },
   },
   plugins: [require("daisyui")],
-}
+};

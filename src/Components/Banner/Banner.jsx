@@ -11,7 +11,7 @@ const Banner = () => {
       infiniteLoop={true}
       className="w-full text-center max-w-7xl mx-auto rounded-lg md:rounded-none"
     >
-      <div className="carousel-item relative h-[400px] md:h-[600px]">
+      <div className="carousel-item relative h-[400px] md:h-[500px]">
         <img
           src="handy1.jpg"
           alt="Slide 1"
@@ -35,7 +35,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="carousel-item relative h-[400px] md:h-[600px]">
+      <div className="carousel-item relative h-[400px] md:h-[500px]">
         <img
           src="handy2.jpg"
           alt="Slide 2"
@@ -60,7 +60,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="carousel-item relative h-[400px] md:h-[600px]">
+      <div className="carousel-item relative h-[400px] md:h-[500px]">
         <img
           src="handy3.jpg"
           alt="Slide 3"
